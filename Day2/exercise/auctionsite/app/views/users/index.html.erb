@@ -1,0 +1,15 @@
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <a href=<%= "/users/show/#{user.id}"%>>
+        <p>Name: <%= user.name %></p>
+        <p>E-mail: <%= user.email %></p>
+      </a>
+    </li>
+    <form action=<%= "/users/destroy/#{user.id}" %> method="POST">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <p><button type="submit">Delete</button></p>
+    </form>
+  <% end %>
+</ul>
+<a href="/users/new">NEW USER</a>
